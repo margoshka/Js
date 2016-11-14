@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+ // Пройти треугольник (2 строны + ПОБОЧНАЯ диагональ) по периметру ПРОТИВ часовой стрелки от точки 9-9.
+  function rand(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+var arr = [];
+function createMatrix(ARR_SIZE) {
+
+
+	for (var i = 0; i < ARR_SIZE; i++) {
+		arr[i] = [];
+		for (var j = 0; j < ARR_SIZE; j++) {
+			arr[i][j] = rand(0, 99);
+		}
+	}
+	return arr;
+}
+console.table(createMatrix(10));
+var border = {
+	right: [],
+	diagonal: [],
+	bottom: arr[arr.length - 1].slice(0, arr[arr.length - 1].length - 1)
+};
+for(var i = arr.length - 1, j = 1; i > 0; i--, j++){
+		border.diagonal.push(arr[i - 1][j]);
+	border.right.push(arr[i][arr.length - 1]);
+}
+border.diagonal.reverse();
+var triangle = border.right.concat(border.diagonal,border.bottom);
+console.log(triangle);
+</script>
+    </head>
+<body>
+
+  
+</body>
+</html>

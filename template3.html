@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+//Задача пройти по краям матрицы против часовой  стрелке
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+var arr = [];
+function createMatrix(ARR_SIZE) {
+
+
+	for (var i = 0; i < ARR_SIZE; i++) {
+		arr[i] = [];
+		for (var j = 0; j < ARR_SIZE; j++) {
+			arr[i][j] = rand(0, 99);
+		}
+	}
+	return arr;
+}
+console.table(createMatrix(10));
+var border = {
+	top: arr[0].slice(1, arr[0].length - 1).reverse(),
+	right: [],
+	bottom: arr[arr.length - 1].slice(1, arr[arr.length - 1].length - 1),
+	left: []
+};
+ for(var i = 0; i < arr.length; i++) {
+ 	border.left.push(arr[i][0]);
+ 	border.right.push(
+ 		      arr[i][arr[i].length - 1]
+ 		);
+ }
+ border.right.reverse();
+ var perimeter = border.left.concat (border.bottom,border.right,border.top);
+ console.log(perimeter);
+ </script>
+    </head>
+<body>
+
+  
+</body>
+</html>
