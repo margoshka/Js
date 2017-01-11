@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+function SeaBattle (size) {
+   var that = this;
+   this.size = size;
+   this.field = [];
+   SeaBattle.prototype.put1Ship = function(i, j, deckNum, position) {
+  if ( this.validate(i,j, deckNum, position) ) {
+       if(position == "vertical"){
+       for(var l = 1; l <= deckNum; l++){
+         this.field[i++][j] = {
+                ship: true  }
+             }  
+       }
+       else if(position == "horizontal"){
+        for(var l = 1; l <= deckNum; l++){
+         this.field[i][j++] = {
+                ship: true }
+            }  
+       }  
+  }
+        else {
+    console.log("There is a problem.Try another numbers. ");
+      }
+};
+
+   SeaBattle.prototype.hit = function(i, j) {
+          if ( this.field[i][j].ship == true)
+              console.log("You've hit"); 
+          else {
+              console.log(this.field[i][j].message);
+               this.field[i][j] = {
+                message:"You've already made this step"
+          }
+          }
+   };
+ 
+   SeaBattle.prototype.validate = function (i, j, deckNum, position) {
+       if ((i in that.field && j in that.field[i]) && (deckNum < 4 && deckNum > 0)){
+           return true;
+       }
+       else 
+           return false;
+   };
+   SeaBattle.prototype.createField = function() {
+      for (var i = 0; i < size; i++) {
+          that.field[i] = [];
+          for (var j = 0; j < size; j++) {
+             that.field[i][j] = {
+                ship: false,
+                opened: true,
+                message: "You've missed"
+             };
+          }
+      }
+   };
+
+    this.createField();
+    this.put1Ship;
+    this.hit;
+    this.put2Ship;
+};
+var batl = new SeaBattle(10);
+batl.put1Ship(12,3,3,"vertical");
+batl.put1Ship(6,7,2,"horizontal");
+batl.hit(6,7);
+console.table(batl.field);
+</script>
+</head>
+<body>
+
+</body>
+
+</html>
