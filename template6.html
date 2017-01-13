@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    </head>
+<body>
+    <div id = "container">
+    
+    </div>
+    <script>
+   var div = document.createElement('div');
+var table = document.createElement('table');
+ for (var i = 0; i < 10; i++) {
+	var tr = document.createElement('tr');
+     table.style.border = "1px solid black";
+     table.style.padding = "0px";
+      table.appendChild(tr);
+	for (var j = 0; j < 10; j++) {
+	var td = document.createElement('td');
+        if ((i + j) % 2 == 0) {
+            td.style.width = "10px";
+            td.style.height = "10px";
+        td.style.backgroundColor = "black";
+        }
+        else {
+            td.style.backgroundColor = "white";
+        }
+       tr.appendChild(td);
+ 	}
+     div.appendChild(table);
+ }
+      document.body.appendChild(div);
+console.log(div);
+</script>
+
+</body>
+
+</html>
+
